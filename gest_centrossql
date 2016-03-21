@@ -12,7 +12,8 @@ PROCEDURE insertar_centro (
   p_telefono IN CENTROTRABAJO.TELEFONO%TYPE);
   
 PROCEDURE borrar_centro (
-  p_id IN CENTROTRABAJO.ID%TYPE);
+  p_id IN CENTROTRABAJO.ID%TYPE
+  p_id_redireccion IN CENTROTRABAJO.ID%TYPE);
   
 PROCEDURE cambiar_provincia (
   p_id IN CENTROTRABAJO.ID%TYPE,
@@ -51,7 +52,7 @@ PROCEDURE insertar_centro (
 PROCEDURE borrar_centro (
   p_id IN CENTROTRABAJO.ID%TYPE) IS
   BEGIN
-    DELETE FORM CENTROTRABAJO
+    DELETE FROM CENTROTRABAJO
     WHERE id = p_id;
   END borrar_centro;
   
@@ -86,13 +87,17 @@ FUNCTION buscar_centro_por_nombre (
     WHERE NOMBRE = LOWER(p_nombre);
   END buscar_centro_por_nombre;
   
-PROCEDURE visualizar_datos_centros (
+PROCEDURE visualizar_datos_centros_nombre (
   p_nombre IN CENTROTRABAJO.NOMBRE%TYPE) IS
   EXEC buscar_centro_por_nombre (p_nombre) RETURN NUMBER AS p_id;
-  BEGIN
-  
+  BEGIN  
     SELECT C.ID, C.NOMBRE CNOM, C.CALLE, C.NUMERO, C.COD_POSTAL, C.CIUDAD, C.PROVINCIA, C.TELEFONO, COUNT(T.DNI) AS "NUMERO TRABAJADORES"
+    FROM CENTROTRABAJO C, TRABAJADOR T
+    WHERE C.IS = P.ID
+    AND C.ID = p_id;
+  END visualizar_datos_centros_nombre;
   
+
   
   
     
