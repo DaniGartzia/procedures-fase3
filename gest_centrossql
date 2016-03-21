@@ -58,19 +58,11 @@ PROCEDURE visualizar_datos_trabajadores_en_centro (
   p_trabajadores_en_centro OUT trabajadores_cursor) IS
   BEGIN
     OPEN p_trabajadores_en_centro FOR
-    (SELECT C.ID, T.DNI, T.NOMBRE, T.APELLIDO1 AS "PRIMER APELLIDO"
+    (SELECT C.ID, T.DNI, T.NOMBRE, T.APELLIDO1 AS "PRIMER APELLIDO", T.APELLIDO2 AS "SEGUNDO APELLIDO"
     FROM CENTROTRABAJO C, TRABAJADOR T
     WHERE C.ID = T.ID
     AND C.ID = p_id);
   END visualizar_datos_trabajadores_en_centro;
   
 END;
-  
-
-  
-  
-    
-  
-  
-
   
