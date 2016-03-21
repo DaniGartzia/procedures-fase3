@@ -1,0 +1,21 @@
+CREATE OR REPLACE PACKAGE gest_trabajador IS
+
+PROCEDURE buscar_trabajador_por_letra (
+  p_letra IN CHAR);
+  
+PROCEDURE buscar_trabajador_tres_letras (
+  p_letras IN VARCHAR2);
+  
+PROCEDURE buscar_trabajador_por_provincia (
+  p_provincia IN CENTROTRABAJO.PROVINCIA%TYPE);
+  
+PROCEDURE buscar_trabajador_por_ciudad (
+  p_ciudad IN CENTROTRABAJO.CIUDAD%TYPE);
+  
+PROCEDURE buscar_trabajador_con_tpersonal (
+  p_tel_personal IN TRABAJADOR.TEL_PERSONAL%TYPE);
+  
+PROCEDURE buscar_trabajador_por_apellido1 (
+  p_apellido1 IN TRABAJADOR.APELLIDO1%TYPE);
+  
+END;
