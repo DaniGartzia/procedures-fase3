@@ -15,7 +15,7 @@ PROCEDURE buscar_centro_por_nombre (
 PROCEDURE visualizar_datos_centros_nombre (
   p_nombre IN CENTROTRABAJO.NOMBRE%TYPE);
   
-PROCEDURE visualizar_todos_trabajadores_en_centro (
+PROCEDURE visualizar_trabs_en_centro (
   p_id IN CENTROTRABAJO.ID%TYPE);
   
 END;
@@ -54,7 +54,7 @@ PROCEDURE visualizar_datos_centros_nombre (
     AND C.ID = p_id;
   END visualizar_datos_centros_nombre;
   
-PROCEDURE visualizar_datos_trabajadores_en_centro (
+PROCEDURE visualizar_trabs_en_centro (
   p_trabajadores_en_centro OUT trabajadores_cursor) IS
   BEGIN
     OPEN p_trabajadores_en_centro FOR
@@ -62,7 +62,7 @@ PROCEDURE visualizar_datos_trabajadores_en_centro (
     FROM CENTROTRABAJO C, TRABAJADOR T
     WHERE C.ID = T.ID
     AND C.ID = p_id);
-  END visualizar_datos_trabajadores_en_centro;
+  END visualizar_trabs_en_centro;
   
 END;
   
