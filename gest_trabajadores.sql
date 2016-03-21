@@ -69,6 +69,8 @@ CREATE OR REPLACE PACKAGE BODY gest_trabajador IS
 	BEGIN
 	OPEN p_todos_trabajadores FOR(SELECT * FROM TRABAJADOR WHERE APELLIDO1=P_APELLIDO1);
 	END;
+	
+	END gest_trabajador;
 	 
 	
 
